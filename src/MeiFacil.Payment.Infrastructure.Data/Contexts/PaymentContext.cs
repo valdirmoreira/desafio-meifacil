@@ -5,7 +5,8 @@ namespace MeiFacil.Payment.Infrastructure.Data.Contexts
 {
     public class PaymentContext : DbContext
     {
-        public PaymentContext()
+        public PaymentContext(DbContextOptions<PaymentContext> options)
+            : base(options)
         {
         }
 

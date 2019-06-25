@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MeiFacil.Payment.Domain.Core\MeiFacil.Payment.Domain.Core.csproj" />
+  </ItemGroup>
+
 </Project>

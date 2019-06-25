@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeiFacil.Payment.Domain.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeiFacil.Payment.Domain", "src\MeiFacil.Payment.Domain\MeiFacil.Payment.Domain.csproj", "{2295305E-EC69-4217-850A-53B86355ABF0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{7B349F3E-369F-439E-8BA6-361A6B9D6634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeiFacil.Payment.Infrastructure.Data", "src\MeiFacil.Payment.Infrastructure.Data\MeiFacil.Payment.Infrastructure.Data.csproj", "{AF4B7DCE-CB54-44A3-87C7-C316987B468B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,10 @@ Global
 		{2295305E-EC69-4217-850A-53B86355ABF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2295305E-EC69-4217-850A-53B86355ABF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2295305E-EC69-4217-850A-53B86355ABF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF4B7DCE-CB54-44A3-87C7-C316987B468B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4B7DCE-CB54-44A3-87C7-C316987B468B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4B7DCE-CB54-44A3-87C7-C316987B468B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4B7DCE-CB54-44A3-87C7-C316987B468B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +51,8 @@ Global
 		{52AF54ED-B46B-453A-8840-D845C447A0CA} = {0DDF1F51-B3FA-4E42-A327-CBDB551A5BD6}
 		{8351D8C4-F417-403E-8743-39BA51402AFF} = {12FBC058-5157-4988-B585-AC8C209386C1}
 		{2295305E-EC69-4217-850A-53B86355ABF0} = {12FBC058-5157-4988-B585-AC8C209386C1}
+		{7B349F3E-369F-439E-8BA6-361A6B9D6634} = {EBF3077C-7CBE-4EE0-B08C-2D828DBC3A39}
+		{AF4B7DCE-CB54-44A3-87C7-C316987B468B} = {7B349F3E-369F-439E-8BA6-361A6B9D6634}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A16D06AD-66A6-40C7-AEBF-CA9DA3A101F8}

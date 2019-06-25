@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{0DDF1F51-B3FA-4E42-A327-CBDB551A5BD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{2D8B5009-32BF-40CF-B163-68DFAAF0790B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{12FBC058-5157-4988-B585-AC8C209386C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{EBF3077C-7CBE-4EE0-B08C-2D828DBC3A39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeiFacil.Payment.Services.Api", "src\MeiFacil.Payment.Services.Api\MeiFacil.Payment.Services.Api.csproj", "{52AF54ED-B46B-453A-8840-D845C447A0CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52AF54ED-B46B-453A-8840-D845C447A0CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52AF54ED-B46B-453A-8840-D845C447A0CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52AF54ED-B46B-453A-8840-D845C447A0CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52AF54ED-B46B-453A-8840-D845C447A0CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52AF54ED-B46B-453A-8840-D845C447A0CA} = {0DDF1F51-B3FA-4E42-A327-CBDB551A5BD6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A16D06AD-66A6-40C7-AEBF-CA9DA3A101F8}
+	EndGlobalSection
+EndGlobal

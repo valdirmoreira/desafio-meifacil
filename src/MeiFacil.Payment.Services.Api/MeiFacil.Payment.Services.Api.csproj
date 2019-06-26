@@ -6,11 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MeiFacil.Payment.Application\MeiFacil.Payment.Application.csproj" />
     <ProjectReference Include="..\MeiFacil.Payment.Infrastructure.Data\MeiFacil.Payment.Infrastructure.Data.csproj" />
   </ItemGroup>
 

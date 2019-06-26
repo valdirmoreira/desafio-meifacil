@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using MeiFacil.Payment.Infrastructure.Data.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace MeiFacil.Payment.Services.Api
 {
@@ -29,6 +23,8 @@ namespace MeiFacil.Payment.Services.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<PaymentContext>(options => options.UseInMemoryDatabase(databaseName: "PaymentApi"));
+            services.AddAutoMapper(typeof(Startup));
+            Application.AutoMapper.AutoMapperConfig.RegisterMappings();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,18 +7,18 @@ using System.Net;
 
 namespace MeiFacil.Payment.Services.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [ModelStateValidation]
     public abstract class BaseController : Controller
     {
+        protected readonly IDomainNotificationHandler _notifications;
+        protected IEnumerable<DomainNotification> Notifications => _notifications.GetNotifications();
+
         protected BaseController(IDomainNotificationHandler notifications)
         {
             _notifications = notifications;
         }
-
-        protected readonly IDomainNotificationHandler _notifications;
-        protected IEnumerable<DomainNotification> Notifications => _notifications.GetNotifications();
 
         protected bool IsValidOperation()
         {

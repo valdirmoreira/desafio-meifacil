@@ -43,6 +43,7 @@ namespace MeiFacil.Payment.Infrastructure.CrossCutting.IoC
             services.AddTransient<IValidator<CheckingAccountViewModel>, CheckingAccountViewModelValidator>();
             services.AddTransient<IValidator<EntryViewModel>, EntryViewModelValidator>();
             services.AddTransient<IValidator<PaymentViewModel>, PaymentViewModelValidator>();
+            services.AddTransient<IValidator<CreatePaymentViewModel>, CreatePaymentViewModelValidator>();
 
             // Filters
             services.AddSingleton<ILogger<HttpGlobalExceptionFilter>, Logger<HttpGlobalExceptionFilter>>();

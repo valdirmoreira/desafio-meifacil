@@ -19,9 +19,10 @@ namespace MeiFacil.Payment.Application.Services
             _mapper = mapper;
         }
 
-        public async Task AddAsync(PaymentViewModel model)
+        public async Task<PaymentViewModel> AddAsync(CreatePaymentViewModel model)
         {
-            await _paymentService.AddAsync(_mapper.Map<Domain.Entities.Payment>(model));
+            var entity = await _paymentService.AddAsync(_mapper.Map<Domain.Entities.Payment>(model));
+            return _mapper.Map<PaymentViewModel>(entity);
         }
     }
 }

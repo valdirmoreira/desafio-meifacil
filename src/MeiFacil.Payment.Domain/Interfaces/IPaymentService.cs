@@ -4,6 +4,6 @@ namespace MeiFacil.Payment.Domain.Interfaces
 {
     public interface IPaymentService
     {
-        Task AddAsync(Entities.Payment entity);
+        Task<Entities.Payment> AddAsync(Entities.Payment entity);
     }
 }

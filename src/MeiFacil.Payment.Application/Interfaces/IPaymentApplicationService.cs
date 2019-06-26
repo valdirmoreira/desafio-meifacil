@@ -5,6 +5,6 @@ namespace MeiFacil.Payment.Application.Interfaces
 {
     public interface IPaymentApplicationService
     {
-        Task AddAsync(PaymentViewModel model);
+        Task<PaymentViewModel> AddAsync(CreatePaymentViewModel model);
     }
 }

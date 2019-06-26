@@ -13,6 +13,7 @@ namespace MeiFacil.Payment.Application.AutoMapper
             CreateMap<CheckingAccount, CheckingAccountViewModel>();
             CreateMap<Entry, EntryViewModel>();
             CreateMap<Domain.Entities.Payment, PaymentViewModel>();
+            CreateMap<Domain.Entities.Payment, CreatePaymentViewModel>();
         }
     }
 }

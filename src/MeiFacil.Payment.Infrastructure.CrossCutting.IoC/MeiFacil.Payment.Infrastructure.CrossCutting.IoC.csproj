@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MeiFacil.Payment.Application\MeiFacil.Payment.Application.csproj" />
     <ProjectReference Include="..\MeiFacil.Payment.Domain.Core\MeiFacil.Payment.Domain.Core.csproj" />
     <ProjectReference Include="..\MeiFacil.Payment.Infrastructure.Data\MeiFacil.Payment.Infrastructure.Data.csproj" />
   </ItemGroup>

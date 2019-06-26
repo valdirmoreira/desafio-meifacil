@@ -1,4 +1,6 @@
-﻿using MeiFacil.Payment.Domain.Core.Notifications;
+﻿using MeiFacil.Payment.Application.Interfaces;
+using MeiFacil.Payment.Application.Services;
+using MeiFacil.Payment.Domain.Core.Notifications;
 using MeiFacil.Payment.Domain.Interfaces;
 using MeiFacil.Payment.Domain.Services;
 using MeiFacil.Payment.Infrastructure.Data.Contexts;
@@ -22,6 +24,11 @@ namespace MeiFacil.Payment.Infrastructure.CrossCutting.IoC
             // Infrastructure - Data
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<PaymentContext>();
+
+            // Application - Service
+            services.AddScoped<ICheckingAccountApplicationService, CheckingAccountApplicationService>();
+            services.AddScoped<IEntryApplicationService, EntryApplicationService>();
+            services.AddScoped<IPaymentApplicationService, PaymentApplicationService>();
         }
     }
 }

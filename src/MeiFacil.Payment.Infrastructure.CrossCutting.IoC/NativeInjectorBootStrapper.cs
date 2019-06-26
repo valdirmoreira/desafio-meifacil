@@ -1,5 +1,12 @@
-﻿using MeiFacil.Payment.Application.Interfaces;
+﻿using FluentValidation;
+using MeiFacil.Payment.Application.Interfaces;
 using MeiFacil.Payment.Application.Services;
+using MeiFacil.Payment.Application.Validators.CheckingAccount;
+using MeiFacil.Payment.Application.Validators.Entry;
+using MeiFacil.Payment.Application.Validators.Payment;
+using MeiFacil.Payment.Application.ViewModels.CheckingAccount;
+using MeiFacil.Payment.Application.ViewModels.Entry;
+using MeiFacil.Payment.Application.ViewModels.Payment;
 using MeiFacil.Payment.Domain.Core.Notifications;
 using MeiFacil.Payment.Domain.Interfaces;
 using MeiFacil.Payment.Domain.Services;
@@ -29,6 +36,11 @@ namespace MeiFacil.Payment.Infrastructure.CrossCutting.IoC
             services.AddScoped<ICheckingAccountApplicationService, CheckingAccountApplicationService>();
             services.AddScoped<IEntryApplicationService, EntryApplicationService>();
             services.AddScoped<IPaymentApplicationService, PaymentApplicationService>();
+
+            // Application - Validators
+            services.AddTransient<IValidator<CheckingAccountViewModel>, CheckingAccountViewModelValidator>();
+            services.AddTransient<IValidator<EntryViewModel>, EntryViewModelValidator>();
+            services.AddTransient<IValidator<PaymentViewModel>, PaymentViewModelValidator>();
         }
     }
 }

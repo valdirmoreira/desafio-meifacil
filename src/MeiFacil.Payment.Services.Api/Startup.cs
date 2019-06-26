@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation.AspNetCore;
+using MeiFacil.Payment.Infrastructure.CrossCutting.Filter;
 using MeiFacil.Payment.Infrastructure.Data.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,14 +23,16 @@ namespace MeiFacil.Payment.Services.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .ConfigureApiBehaviorOptions(options =>
-                 {
-                     options.SuppressModelStateInvalidFilter = true;
-                 })
-                .AddFluentValidation();
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .ConfigureApiBehaviorOptions(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            })
+            .AddFluentValidation();
 
             services.AddDbContext<PaymentContext>(options => options.UseInMemoryDatabase(databaseName: "PaymentApi"));
             services.AddAutoMapper(typeof(Startup));

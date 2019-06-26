@@ -10,9 +10,11 @@ using MeiFacil.Payment.Application.ViewModels.Payment;
 using MeiFacil.Payment.Domain.Core.Notifications;
 using MeiFacil.Payment.Domain.Interfaces;
 using MeiFacil.Payment.Domain.Services;
+using MeiFacil.Payment.Infrastructure.CrossCutting.Filter;
 using MeiFacil.Payment.Infrastructure.Data.Contexts;
 using MeiFacil.Payment.Infrastructure.Data.UnitOfWork;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace MeiFacil.Payment.Infrastructure.CrossCutting.IoC
 {
@@ -41,6 +43,10 @@ namespace MeiFacil.Payment.Infrastructure.CrossCutting.IoC
             services.AddTransient<IValidator<CheckingAccountViewModel>, CheckingAccountViewModelValidator>();
             services.AddTransient<IValidator<EntryViewModel>, EntryViewModelValidator>();
             services.AddTransient<IValidator<PaymentViewModel>, PaymentViewModelValidator>();
+
+            // Filters
+            services.AddSingleton<ILogger<HttpGlobalExceptionFilter>, Logger<HttpGlobalExceptionFilter>>();
+            services.AddScoped<HttpGlobalExceptionFilter>();
         }
     }
 }

@@ -10,19 +10,36 @@ namespace MeiFacil.Payment.Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IPaymentService _paymentService;
+        private readonly ICheckingAccountService _checkingAccountService;
 
         public PaymentApplicationService(
             IMapper mapper,
-            IPaymentService paymentService)
+            IPaymentService paymentService,
+            ICheckingAccountService checkingAccountService)
         {
             _paymentService = paymentService;
             _mapper = mapper;
+            _checkingAccountService = checkingAccountService;
         }
 
-        public async Task<PaymentViewModel> AddAsync(CreatePaymentViewModel model)
+        public async Task<CreatedPaymentViewModel> AddAsync(CreatePaymentViewModel model)
         {
-            var entity = await _paymentService.AddAsync(_mapper.Map<Domain.Entities.Payment>(model));
-            return _mapper.Map<PaymentViewModel>(entity);
+            var entity = await _paymentService.CreateAsync(model.Value, model.Installments, model.DebitAccountNumber, model.CreditAccountNumber);
+
+            if (entity != null)
+            {
+               var debitAccount = await _checkingAccountService.GetByNumberAsync(entity.DebitAccountNumber);
+               var creditAccount = await _checkingAccountService.GetByNumberAsync(entity.CreditAccountNumber);
+
+                return new CreatedPaymentViewModel
+                {
+                    CreditAccountBalance = creditAccount.Balance,
+                    DebitAccountBalance = debitAccount.Balance,
+                    NetValue = entity.NetValue
+                };
+            }
+
+            return await Task.FromResult<CreatedPaymentViewModel>(null);
         }
     }
 }

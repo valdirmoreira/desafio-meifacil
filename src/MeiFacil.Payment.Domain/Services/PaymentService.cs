@@ -32,17 +32,14 @@ namespace MeiFacil.Payment.Domain.Services
 
         public async Task<Entities.Payment> CreateAsync(decimal value, int installments, int debitAccountNumber, int creditAccountNumber)
         {
-
-            #region Validate Accounts
+            #region Verifica se as contas existem
             var debitAccount = (await _unitOfWork
                 .CheckingAccountRepository
                 .ListAsync(new CheckingAccountFilterSpecification(debitAccountNumber)))
                 .FirstOrDefault();
 
             if (debitAccount == null)
-            {
-                _notifications.Handle(new DomainNotification(string.Empty, "debit account not found"));
-            }
+                _notifications.Handle(new DomainNotification(string.Empty, "Debit Account not found"));
 
             var creditAccount = (await _unitOfWork
                 .CheckingAccountRepository
@@ -50,47 +47,91 @@ namespace MeiFacil.Payment.Domain.Services
                 .FirstOrDefault();
 
             if (debitAccount == null)
-            {
-                _notifications.Handle(new DomainNotification(string.Empty, "credit account not found"));
-            }
+                _notifications.Handle(new DomainNotification(string.Empty, "Credit Account not found"));
+
+            if (_notifications.HasNotifications())
+                return await Task.FromResult<Entities.Payment>(null);
             #endregion
 
-            #region Create Entries
+            #region Calculas as taxas
+            var netValue = CalculateTax(value, installments);
+            #endregion
+
+            #region Verifica o saldo da conta de débito
+            if (debitAccount.Balance < netValue)
+                _notifications.Handle(new DomainNotification(string.Empty, "The debit account is not enough"));
+            #endregion
+
+            #region Insere os lançamentos
             var debitEntry = new Entry
             {
                 CheckingAccountNumber = debitAccount.Number,
                 Type = "D",
-                Value = value
+                Value = netValue
             };
 
             var creditEntry = new Entry
             {
                 CheckingAccountNumber = creditAccount.Number,
                 Type = "C",
-                Value = value
+                Value = netValue
             };
-
-
-            _unitOfWork.EntryRepository.Add(debitEntry);
-            _unitOfWork.EntryRepository.Add(creditEntry);
-
             #endregion
 
-            #region Create Payment
+            #region Criação do pagamento
             var payment = new Domain.Entities.Payment
             {
                 GrossValue = value,
-                NetValue = value, // ToDO
+                NetValue = netValue,
                 Installments = installments,
                 CreditAccountNumber = creditAccount.Number,
                 DebitAccountNumber = debitAccount.Number
             };
+            #endregion
 
+            #region Atualiza o saldo das contas
+            debitAccount.Balance -= netValue;
+            creditAccount.Balance += netValue;
+            #endregion
+
+            #region Commit
+            _unitOfWork.EntryRepository.Add(debitEntry);
+            _unitOfWork.EntryRepository.Add(creditEntry);
             _unitOfWork.PaymentRepository.Add(payment);
+            _unitOfWork.CheckingAccountRepository.Update(debitAccount);
+            _unitOfWork.CheckingAccountRepository.Update(creditAccount);
+
+            if (!(await _unitOfWork.CommitAsync()))
+                return await Task.FromResult<Entities.Payment>(null);
             #endregion
 
-            #region Account Balance Update
-            #endregion
+            return payment;
+        }
+
+        private decimal CalculateTax(decimal value, int installments)
+        {
+            if (installments == 0 || value == 0)
+                return 0;
+
+            decimal tax;
+
+            switch (installments)
+            {
+                case 1:
+                    tax = 3.79M;
+                    break;
+                case 2:
+                    tax = 5.78M;
+                    break;
+                case 3:
+                    tax = 7.77M;
+                    break;
+                default:
+                    tax = 7.77M;
+                    break;
+            }
+
+            return value + ((value * tax) / 100);
         }
     }
 }

@@ -6,5 +6,6 @@ namespace MeiFacil.Payment.Domain.Interfaces
     public interface ICheckingAccountService
     {
         Task AddAsync(CheckingAccount entity);
+        Task<CheckingAccount> GetByNumberAsync(int number);
     }
 }

@@ -89,16 +89,6 @@ namespace MeiFacil.Payment.Services.Api.Controllers
             }
         }
 
-        protected void NotifyModelStateErrors()
-        {
-            var erros = ModelState.Values.SelectMany(v => v.Errors);
-            foreach (var erro in erros)
-            {
-                var erroMsg = erro.Exception == null ? erro.ErrorMessage : erro.Exception.Message;
-                NotifyError(string.Empty, erroMsg);
-            }
-        }
-
         protected void NotifyError(string code, string message)
         {
             _notifications.Handle(new DomainNotification(code, message));

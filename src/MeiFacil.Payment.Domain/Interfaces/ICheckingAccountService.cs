@@ -1,4 +1,5 @@
 ﻿using MeiFacil.Payment.Domain.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MeiFacil.Payment.Domain.Interfaces
@@ -7,5 +8,9 @@ namespace MeiFacil.Payment.Domain.Interfaces
     {
         Task AddAsync(CheckingAccount entity);
         Task<CheckingAccount> GetByNumberAsync(int number);
+
+        Task<IReadOnlyList<CheckingAccount>> ListAsync(ISpecification<CheckingAccount> spec);
+
+        Task<int> CountAsync(ISpecification<CheckingAccount> spec);
     }
 }

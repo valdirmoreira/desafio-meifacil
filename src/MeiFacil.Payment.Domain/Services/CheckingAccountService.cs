@@ -1,6 +1,7 @@
 ﻿using MeiFacil.Payment.Domain.Entities;
 using MeiFacil.Payment.Domain.Interfaces;
 using MeiFacil.Payment.Domain.Specifications;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,12 +22,22 @@ namespace MeiFacil.Payment.Domain.Services
             await _unitOfWork.CommitAsync();
         }
 
+        public Task<int> CountAsync(ISpecification<CheckingAccount> spec)
+        {
+            return _unitOfWork.CheckingAccountRepository.CountAsync(spec);
+        }
+
         public async Task<CheckingAccount> GetByNumberAsync(int number)
         {
             return (await _unitOfWork
                 .CheckingAccountRepository
                 .ListAsync(new CheckingAccountFilterSpecification(number)))
                 .FirstOrDefault();
+        }
+
+        public Task<IReadOnlyList<CheckingAccount>> ListAsync(ISpecification<CheckingAccount> spec)
+        {
+            return _unitOfWork.CheckingAccountRepository.ListAsync(spec);
         }
     }
 }

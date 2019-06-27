@@ -18,7 +18,7 @@ namespace UnitTests.Domain.Services.PaymentService
         }
 
         [Fact]
-        public async Task CalculateTaxTestAsync()
+        public void CalculateTaxTest()
         {
             var paymentService = new MeiFacil.Payment.Domain.Services.PaymentService(_unitOfWork.Object,
                                                    _notifications.Object);

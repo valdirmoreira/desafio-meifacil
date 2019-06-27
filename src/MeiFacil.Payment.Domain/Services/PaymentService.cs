@@ -108,7 +108,7 @@ namespace MeiFacil.Payment.Domain.Services
             return payment;
         }
 
-        private decimal CalculateTax(decimal value, int installments)
+        public decimal CalculateTax(decimal value, int installments)
         {
             if (installments == 0 || value == 0)
                 return 0;

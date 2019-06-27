@@ -25,9 +25,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 -
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeiFacil.Payment.Infrastructure.CrossCutting.IoC", "src\MeiFacil.Payment.Infrastructure.CrossCutting.IoC\MeiFacil.Payment.Infrastructure.CrossCutting.IoC.csproj", "{F8740E59-2ADD-4330-A3BD-82CDE8E56EB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeiFacil.Payment.Application", "src\MeiFacil.Payment.Application\MeiFacil.Payment.Application.csproj", "{895B7360-EAA4-49D1-8AE1-23E566616724}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeiFacil.Payment.Application", "src\MeiFacil.Payment.Application\MeiFacil.Payment.Application.csproj", "{895B7360-EAA4-49D1-8AE1-23E566616724}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeiFacil.Payment.Infrastructure.CrossCutting.Filter", "src\MeiFacil.Payment.Infrastructure.CrossCutting.Filter\MeiFacil.Payment.Infrastructure.CrossCutting.Filter.csproj", "{94C34A2F-8666-408C-86E9-4EDFECD74613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeiFacil.Payment.Infrastructure.CrossCutting.Filter", "src\MeiFacil.Payment.Infrastructure.CrossCutting.Filter\MeiFacil.Payment.Infrastructure.CrossCutting.Filter.csproj", "{94C34A2F-8666-408C-86E9-4EDFECD74613}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{39C661ED-0E15-4739-8A24-E9B1B3650FA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{42952367-D759-49FF-90CB-D9B2B33CA784}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{6148FFFA-5C2D-42FE-A7A7-11D3AF9BD22C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,11 +69,19 @@ Global
 		{94C34A2F-8666-408C-86E9-4EDFECD74613}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94C34A2F-8666-408C-86E9-4EDFECD74613}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94C34A2F-8666-408C-86E9-4EDFECD74613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6148FFFA-5C2D-42FE-A7A7-11D3AF9BD22C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6148FFFA-5C2D-42FE-A7A7-11D3AF9BD22C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6148FFFA-5C2D-42FE-A7A7-11D3AF9BD22C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6148FFFA-5C2D-42FE-A7A7-11D3AF9BD22C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{0DDF1F51-B3FA-4E42-A327-CBDB551A5BD6} = {39C661ED-0E15-4739-8A24-E9B1B3650FA6}
+		{2D8B5009-32BF-40CF-B163-68DFAAF0790B} = {39C661ED-0E15-4739-8A24-E9B1B3650FA6}
+		{12FBC058-5157-4988-B585-AC8C209386C1} = {39C661ED-0E15-4739-8A24-E9B1B3650FA6}
+		{EBF3077C-7CBE-4EE0-B08C-2D828DBC3A39} = {39C661ED-0E15-4739-8A24-E9B1B3650FA6}
 		{52AF54ED-B46B-453A-8840-D845C447A0CA} = {0DDF1F51-B3FA-4E42-A327-CBDB551A5BD6}
 		{8351D8C4-F417-403E-8743-39BA51402AFF} = {12FBC058-5157-4988-B585-AC8C209386C1}
 		{2295305E-EC69-4217-850A-53B86355ABF0} = {12FBC058-5157-4988-B585-AC8C209386C1}
@@ -77,6 +91,7 @@ Global
 		{F8740E59-2ADD-4330-A3BD-82CDE8E56EB5} = {658A38E2-7B6C-4580-A979-2D87FFD643DE}
 		{895B7360-EAA4-49D1-8AE1-23E566616724} = {2D8B5009-32BF-40CF-B163-68DFAAF0790B}
 		{94C34A2F-8666-408C-86E9-4EDFECD74613} = {658A38E2-7B6C-4580-A979-2D87FFD643DE}
+		{6148FFFA-5C2D-42FE-A7A7-11D3AF9BD22C} = {42952367-D759-49FF-90CB-D9B2B33CA784}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A16D06AD-66A6-40C7-AEBF-CA9DA3A101F8}

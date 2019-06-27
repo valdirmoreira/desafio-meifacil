@@ -6,9 +6,11 @@ using MeiFacil.Payment.Infrastructure.Data.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace MeiFacil.Payment.Services.Api
 {
@@ -39,6 +41,18 @@ namespace MeiFacil.Payment.Services.Api
             services.AddAutoMapper(typeof(Startup));
             Application.AutoMapper.AutoMapperConfig.RegisterMappings();
 
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "MeiFacil.Payment",
+                    Description = "MeiFacil Payment API",
+                    Contact = new Contact { Name = "Valdir Moreira", Email = "valdir.moreira.junior@gmail.com", Url = "https://www.meifacil.com/" },
+                    License = new License { Name = "PRIVATE", Url = string.Empty }
+                });
+            });
+
             NativeInjectorBootStrapper.RegisterServices(services);
         }
 
@@ -55,7 +69,19 @@ namespace MeiFacil.Payment.Services.Api
                 app.UseHsts();
             }
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MeiFacil.Payment API");
+                c.RoutePrefix = "docs";
+            });
+
             app.UseHttpsRedirection();
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "docs");
+            app.UseRewriter(option);
+
             app.UseMvc();
         }
     }

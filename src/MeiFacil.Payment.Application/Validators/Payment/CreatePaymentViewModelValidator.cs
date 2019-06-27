@@ -7,9 +7,25 @@ namespace MeiFacil.Payment.Application.Validators.Payment
     {
         public CreatePaymentViewModelValidator()
         {
-            //RuleFor(c => c.Id)
-            //    .NotEmpty()
-            //    .WithMessage("O campo id é obrigatório.");
+            RuleFor(c => c.Value)
+                .NotEmpty()
+                .WithMessage("Value field is required")
+                .GreaterThan(0)
+                .WithMessage("Value field is invalid");
+
+            RuleFor(c => c.CreditAccountNumber)
+                .NotEmpty()
+                .WithMessage("CreditAccountNumber field is required");
+
+            RuleFor(c => c.DebitAccountNumber)
+                .NotEmpty()
+                .WithMessage("DebitAccountNumber field is required");
+
+            RuleFor(c => c.Installments)
+                .NotEmpty()
+                .WithMessage("Installments field is required")
+                .GreaterThan(0)
+                .WithMessage("Installments field is invalid");
         }
     }
 }

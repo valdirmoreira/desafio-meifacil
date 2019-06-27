@@ -13,6 +13,7 @@ using MeiFacil.Payment.Domain.Services;
 using MeiFacil.Payment.Infrastructure.CrossCutting.Filter;
 using MeiFacil.Payment.Infrastructure.Data.Contexts;
 using MeiFacil.Payment.Infrastructure.Data.UnitOfWork;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -22,6 +23,9 @@ namespace MeiFacil.Payment.Infrastructure.CrossCutting.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
+            // ASP.NET HttpContext dependency
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             // Domain - Notification
             services.AddScoped<IDomainNotificationHandler, DomainNotificationHandler>();
 

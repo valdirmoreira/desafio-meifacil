@@ -4,7 +4,7 @@ namespace MeiFacil.Payment.Domain.Core.Abstracts
 {
     public abstract class BaseEntity
     {
-        public Guid Id { get; protected set; }
+        public Guid Id { get; set; }
         public override bool Equals(object obj)
         {
             var compareTo = obj as BaseEntity;
